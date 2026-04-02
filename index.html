@@ -398,7 +398,19 @@
 
   footer {
     text-align: center; padding: 2rem; color: rgba(201,168,76,0.4);
-    font-size: 0.85rem; letter-spacing: 0.2em;
+    font-size: 0.85rem; letter-spacing: 0.2em; position: relative;
+  }
+
+  .export-btn {
+    position: absolute; bottom: 10px; right: 10px; background: none;
+    border: none; color: rgba(201,168,76,0.2); font-size: 0.7rem;
+    cursor: pointer; padding: 5px 10px; transition: all 0.3s;
+    font-family: 'Cinzel', serif; letter-spacing: 0.1em;
+  }
+
+  .export-btn:hover {
+    color: rgba(201,168,76,0.6);
+    transform: scale(1.1);
   }
 
   /* Responsive */
@@ -558,6 +570,7 @@
 
 <footer>
   <p>XV Anos — Anny — 2026</p>
+  <button class="export-btn" id="exportBtn" title="Exportar confirmações">📊</button>
 </footer>
 
 <!-- ═══════════ MODAL ═══════════ -->
@@ -727,7 +740,42 @@
     formMsg.className = `form-msg ${type}`;
   }
 
+  // ── Export to Excel ──
+  document.getElementById('exportBtn').addEventListener('click', async () => {
+    try {
+      const snapshot = await convidadosRef.once('value');
+      const data = snapshot.val();
+      
+      if (!data) {
+        alert('Nenhuma confirmação encontrada.');
+        return;
+      }
+
+      // Converter para array
+      const confirmacoes = Object.values(data).map(item => ({
+        'Nome': item.nome || '',
+        'Telefone': item.telefone || '',
+        'Confirmação': item.confirmacao === 'sim' ? 'Confirmo' : 'Não poderei comparecer'
+      }));
+
+      // Criar planilha
+      const ws = XLSX.utils.json_to_sheet(confirmacoes);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Confirmações');
+
+      // Download
+      const hoje = new Date().toLocaleDateString('pt-BR').replace(/\//g, '-');
+      XLSX.writeFile(wb, `Confirmacoes_XV_Anny_${hoje}.xlsx`);
+    } catch (err) {
+      console.error('Erro ao exportar:', err);
+      alert('Erro ao exportar confirmações.');
+    }
+  });
+
 </script>
+
+<!-- ═══════════ XLSX LIBRARY ═══════════ -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 
 </body>
 </html>
