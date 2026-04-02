@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XV Anos - Anny | Convite Especial</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8d48b;
+    --gold-dark: #8a6d2b;
+    --navy: #0a0a1a;
+    --navy-light: #141428;
+    --blue-dark: #1a2744;
+    --blue-mid: #2a4a7f;
+    --blue-light: #4a7abf;
+    --blue-pale: #7ba4d4;
+    --cream: #f5e6c8;
+    --rose: #8b2035;
+    --rose-light: #c4485e;
+    --white: #faf5eb;
+    --green: #2a8a4a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--navy);
+  }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(201,168,76,0.02) 60px, rgba(201,168,76,0.02) 61px),
+      repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(201,168,76,0.02) 60px, rgba(201,168,76,0.02) 61px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .particle {
+    position: absolute; width: 3px; height: 3px; background: var(--gold);
+    border-radius: 50%; opacity: 0; animation: float-up 8s infinite;
+  }
+
+  @keyframes float-up {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.1; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding: 2rem; z-index: 2;
+  }
+
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .deco-frame { position: absolute; inset: 20px; border: 1px solid rgba(201,168,76,0.3); pointer-events: none; }
+  .deco-frame::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(201,168,76,0.15); }
+
+  .corner { position: absolute; width: 60px; height: 60px; border-color: var(--gold); border-style: solid; }
+  .corner--tl { top: -1px; left: -1px; border-width: 3px 0 0 3px; }
+  .corner--tr { top: -1px; right: -1px; border-width: 3px 3px 0 0; }
+  .corner--bl { bottom: -1px; left: -1px; border-width: 0 0 3px 3px; }
+  .corner--br { bottom: -1px; right: -1px; border-width: 0 3px 3px 0; }
+
+  .corner::after { content: '◆'; position: absolute; color: var(--gold); font-size: 10px; }
+  .corner--tl::after { bottom: -5px; right: -5px; }
+  .corner--tr::after { bottom: -5px; left: -5px; }
+  .corner--bl::after { top: -5px; right: -5px; }
+  .corner--br::after { top: -5px; left: -5px; }
+
+  .rose-icon { width: 80px; height: 80px; margin-bottom: 1.5rem; animation: glow-pulse 3s ease-in-out infinite; }
+  .rose-icon svg { width: 100%; height: 100%; filter: drop-shadow(0 0 15px rgba(139,32,53,0.5)); }
+
+  @keyframes glow-pulse {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(201,168,76,0.3)); }
+    50% { filter: drop-shadow(0 0 25px rgba(201,168,76,0.6)); }
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300;
+    letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-light);
+    margin-bottom: 0.5rem; opacity: 0; animation: fadeInUp 1s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 700; color: var(--gold); line-height: 1.1; margin-bottom: 0.3rem;
+    text-shadow: 0 0 40px rgba(201,168,76,0.3); opacity: 0; animation: fadeInUp 1s 0.5s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Cinzel Decorative', serif; font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 1.5rem;
+    text-shadow: 0 0 60px rgba(201,168,76,0.4), 0 4px 8px rgba(0,0,0,0.5);
+    opacity: 0; animation: fadeInUp 1s 0.9s forwards;
+  }
+
+  .hero-da {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300; font-style: italic; color: var(--gold-light); letter-spacing: 0.3em;
+    margin: -0.3rem 0 -0.5rem; opacity: 0; animation: fadeInUp 1s 0.7s forwards;
+  }
+
+  .hero-divider {
+    width: 200px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 1.5rem; position: relative; opacity: 0; animation: fadeInUp 1s 1.1s forwards;
+  }
+
+  .hero-divider::before {
+    content: '✦'; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); color: var(--gold); font-size: 14px;
+    background: var(--navy); padding: 0 10px;
+  }
+
+  .hero-date {
+    font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 0.2em;
+    color: var(--cream); opacity: 0; animation: fadeInUp 1s 1.3s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeInUp 1s 1.5s forwards;
+  }
+
+  .scroll-hint span { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.6; }
+
+  .scroll-arrow {
+    width: 20px; height: 20px; border-right: 1.5px solid var(--gold);
+    border-bottom: 1.5px solid var(--gold); transform: rotate(45deg); animation: bounce-down 2s infinite; opacity: 0.6;
+  }
+
+  @keyframes bounce-down {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Sections ── */
+  section { position: relative; z-index: 2; padding: 5rem 2rem; }
+  .section-inner { max-width: 900px; margin: 0 auto; }
+
+  .intro { text-align: center; background: linear-gradient(180deg, transparent, rgba(201,168,76,0.03), transparent); }
+
+  .intro-text {
+    font-size: 1.35rem; font-weight: 300; line-height: 2; color: var(--cream);
+    max-width: 650px; margin: 0 auto 2rem; font-style: italic;
+  }
+
+  .intro-text strong { color: var(--gold); font-weight: 600; }
+
+  .section-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--gold); text-align: center; margin-bottom: 1rem; }
+  .section-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold-light); text-align: center; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 3rem; font-weight: 300; }
+
+  .deco-line { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 2rem auto; }
+  .deco-line span { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .deco-line span:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+  .deco-line i { color: var(--gold); font-style: normal; font-size: 12px; }
+
+  /* ── Info ── */
+  .info { text-align: center; }
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 700px; margin: 2rem auto; }
+  .info-item { padding: 1.5rem; }
+  .info-icon { font-size: 1.8rem; margin-bottom: 0.75rem; opacity: 0.7; }
+  .info-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .info-value { font-size: 1.2rem; color: var(--cream); line-height: 1.5; }
+
+  /* ── Gifts ── */
+  .gifts { background: linear-gradient(180deg, transparent, rgba(201,168,76,0.03), transparent); }
+  
+  .gifts-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 1.5rem; 
+    max-width: 900px; 
+    margin: 2rem auto; 
+  }
+  
+  .gift-item {
+    background: rgba(201,168,76,0.04); 
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 2rem 1.5rem; 
+    text-align: center; 
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .gift-item::before {
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); 
+    transition: transform 0.6s;
+  }
+  
+  .gift-item:hover::before { transform: scaleX(1); }
+  
+  .gift-item:hover { 
+    border-color: rgba(201,168,76,0.35); 
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  
+  .gift-icon { 
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
+    opacity: 0.8;
+    transition: transform 0.3s;
+  }
+  
+  .gift-item:hover .gift-icon {
+    transform: scale(1.1);
+  }
+  
+  .gift-name { 
+    font-family: 'Cinzel', serif; 
+    font-size: 0.9rem; 
+    letter-spacing: 0.15em; 
+    text-transform: uppercase; 
+    color: var(--gold); 
+    line-height: 1.4;
+  }
+
+  /* ── Dresscode ── */
+  .dresscode { background: linear-gradient(180deg, transparent, rgba(26,39,68,0.3), transparent); }
+
+  .dresscode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 700px; margin: 0 auto; }
+
+  .dresscode-card {
+    background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem 2rem; text-align: center; transition: all 0.4s;
+  }
+
+  .dresscode-card:hover { border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.08); }
+
+  .dresscode-label { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .dresscode-desc { font-size: 1.3rem; font-weight: 500; color: var(--cream); margin-bottom: 1rem; }
+
+  .color-swatches { display: flex; justify-content: center; gap: 8px; }
+  .swatch { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid rgba(201,168,76,0.4); }
+
+  /* ── RSVP ── */
+  .rsvp { text-align: center; background: linear-gradient(180deg, rgba(139,32,53,0.05), transparent); }
+
+  .rsvp-btn {
+    display: inline-block; padding: 1rem 3rem; background: transparent;
+    border: 2px solid var(--gold); color: var(--gold); font-family: 'Cinzel', serif;
+    font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer;
+    transition: all 0.4s; position: relative;
+  }
+
+  .rsvp-btn::before, .rsvp-btn::after {
+    content: ''; position: absolute; width: 20px; height: 20px;
+    border-color: var(--gold); border-style: solid; transition: all 0.3s;
+  }
+
+  .rsvp-btn::before { top: -6px; left: -6px; border-width: 2px 0 0 2px; }
+  .rsvp-btn::after { bottom: -6px; right: -6px; border-width: 0 2px 2px 0; }
+  .rsvp-btn:hover::before { top: -10px; left: -10px; }
+  .rsvp-btn:hover::after { bottom: -10px; right: -10px; }
+
+  .rsvp-btn:hover {
+    background: var(--gold); color: var(--navy);
+    box-shadow: 0 10px 30px rgba(201,168,76,0.3);
+  }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    z-index: 1000; display: none; align-items: center; justify-content: center;
+    padding: 1.5rem; backdrop-filter: blur(5px);
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: linear-gradient(135deg, #0e0e22, #0a0a1a);
+    border: 1px solid rgba(201,168,76,0.3); max-width: 500px; width: 100%;
+    padding: 3rem 2.5rem; position: relative; animation: modalIn 0.4s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute; top: 15px; right: 20px; background: none; border: none;
+    color: var(--gold); font-size: 1.5rem; cursor: pointer; opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .modal-close:hover { opacity: 1; }
+
+  .modal h3 {
+    font-family: 'Cinzel Decorative', serif; font-size: 1.5rem; color: var(--gold);
+    text-align: center; margin-bottom: 0.5rem;
+  }
+
+  .modal p.modal-desc {
+    font-size: 1rem; text-align: center; color: var(--cream); opacity: 0.7;
+    margin-bottom: 2rem; font-style: italic;
+  }
+
+  .form-group { margin-bottom: 1.5rem; }
+
+  .form-group label {
+    display: block; font-family: 'Cinzel', serif; font-size: 0.7rem;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input, .form-group select {
+    width: 100%; padding: 0.9rem 1rem; background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2); color: var(--cream);
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+    outline: none; transition: border-color 0.3s;
+  }
+
+  .form-group input::placeholder { color: rgba(245,230,200,0.3); }
+
+  .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+
+  .form-group select { appearance: none; cursor: pointer; }
+
+  .form-group select option { background: var(--navy); color: var(--cream); }
+
+  .form-submit {
+    width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border: none; color: var(--navy); font-family: 'Cinzel', serif; font-size: 0.9rem;
+    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s;
+  }
+
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(201,168,76,0.4); }
+  .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .form-msg {
+    margin-top: 1rem; padding: 1rem; text-align: center; font-size: 0.95rem;
+    border-radius: 4px; display: none;
+  }
+
+  .form-msg.success {
+    background: rgba(42,138,74,0.2); border: 1px solid var(--green);
+    color: var(--green); display: block;
+  }
+
+  .form-msg.error {
+    background: rgba(139,32,53,0.2); border: 1px solid var(--rose);
+    color: var(--rose-light); display: block;
+  }
+
+  /* ── Petals ── */
+  .petal {
+    position: fixed; width: 12px; height: 18px; background: var(--rose);
+    border-radius: 50% 0 50% 0; opacity: 0.7; pointer-events: none;
+    animation: fall linear forwards; z-index: 10;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  footer {
+    text-align: center; padding: 2rem; color: rgba(201,168,76,0.4);
+    font-size: 0.85rem; letter-spacing: 0.2em;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .gifts-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+    .gift-item { padding: 1.5rem 1rem; }
+    .gift-icon { font-size: 2rem; }
+    .dresscode-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="deco-frame">
+    <div class="corner corner--tl"></div>
+    <div class="corner corner--tr"></div>
+    <div class="corner corner--bl"></div>
+    <div class="corner corner--br"></div>
+  </div>
+
+  <div class="rose-icon">
+    <svg viewBox="0 0 100 100" fill="currentColor" style="color: var(--rose);">
+      <path d="M50 20 C30 20 20 35 20 50 C20 65 35 80 50 80 C65 80 80 65 80 50 C80 35 70 20 50 20 Z M50 30 C40 30 30 40 30 50 C30 60 40 70 50 70 C60 70 70 60 70 50 C70 40 60 30 50 30 Z"/>
+    </svg>
+  </div>
+
+  <p class="hero-subtitle">Você está convidado(a)</p>
+  <h1 class="hero-title">XV Anos</h1>
+  <p class="hero-da">da</p>
+  <h2 class="hero-name">Anny</h2>
+  <div class="hero-divider"></div>
+  <p class="hero-date">23 · Maio · 2026</p>
+
+  <div class="scroll-hint">
+    <span>Descubra</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══════════ INTRO ═══════════ -->
+<section class="intro">
+  <div class="section-inner">
+    <div class="deco-line"><span></span><i>✦</i><span></span></div>
+    <p class="intro-text">
+      É com <strong>imensa alegria</strong> que convidamos você para celebrar conosco
+      um dos momentos mais especiais da vida da <strong>Anny</strong>.
+    </p>
+    <p class="intro-text">
+      Venha fazer parte desta <strong>noite mágica e inesquecível</strong>,
+      repleta de elegância, emoção e muita festa!
+    </p>
+    <div class="deco-line"><span></span><i>🌹</i><span></span></div>
+  </div>
+</section>
+
+<!-- ═══════════ INFO ═══════════ -->
+<section class="info">
+  <div class="section-inner">
+    <h2 class="section-title">Informações</h2>
+    <div class="deco-line"><span></span><i>✦</i><span></span></div>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-icon">📅</div>
+        <p class="info-label">Data</p>
+        <p class="info-value">23 de Maio de 2026<br>Sábado</p>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕗</div>
+        <p class="info-label">Horário</p>
+        <p class="info-value">20:00h</p>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <p class="info-label">Local</p>
+        <p class="info-value">Ilha di Capri<br>São Bernardo do Campo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DRESSCODE ═══════════ -->
+<section class="dresscode">
+  <div class="section-inner">
+    <h2 class="section-title">Dresscode</h2>
+    <p class="section-subtitle">Traje de Gala</p>
+    <div class="dresscode-grid">
+      <div class="dresscode-card">
+        <p class="dresscode-label">Homens</p>
+        <p class="dresscode-desc">All Black</p>
+        <div class="color-swatches">
+          <div class="swatch" style="background:#000"></div>
+          <div class="swatch" style="background:#111"></div>
+          <div class="swatch" style="background:#1a1a1a"></div>
+        </div>
+      </div>
+      <div class="dresscode-card">
+        <p class="dresscode-label">Mulheres</p>
+        <p class="dresscode-desc">Tons de Azul</p>
+        <div class="color-swatches">
+          <div class="swatch" style="background:#c8d9ec"></div>
+          <div class="swatch" style="background:#8eb4d9"></div>
+          <div class="swatch" style="background:#5e8fc4"></div>
+          <div class="swatch" style="background:#2e6db5"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SUGESTÕES DE PRESENTE ═══════════ -->
+<section class="gifts">
+  <div class="section-inner">
+    <h2 class="section-title">Sugestões de Presente</h2>
+    <p class="section-subtitle">Se desejar presentear</p>
+    <div class="deco-line"><span></span><i>✦</i><span></span></div>
+    
+    <div class="gifts-grid">
+      <div class="gift-item">
+        <div class="gift-icon">👜</div>
+        <p class="gift-name">Bolsa</p>
+      </div>
+      <div class="gift-item">
+        <div class="gift-icon">👗</div>
+        <p class="gift-name">Pijama</p>
+      </div>
+      <div class="gift-item">
+        <div class="gift-icon">🧴</div>
+        <p class="gift-name">Óleo, Creme ou Esfoliante</p>
+      </div>
+      <div class="gift-item">
+        <div class="gift-icon">💍</div>
+        <p class="gift-name">Acessórios</p>
+      </div>
+      <div class="gift-item">
+        <div class="gift-icon">💄</div>
+        <p class="gift-name">Maquiagem</p>
+      </div>
+      <div class="gift-item">
+        <div class="gift-icon">✨</div>
+        <p class="gift-name">Perfume</p>
+      </div>
+      <div class="gift-item">
+        <div class="gift-icon">🌸</div>
+        <p class="gift-name">Skincare</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RSVP ═══════════ -->
+<section class="rsvp">
+  <div class="section-inner">
+    <h2 class="section-title">Confirme sua Presença</h2>
+    <p class="section-subtitle">Contamos com você</p>
+    <button class="rsvp-btn" id="rsvpBtn">Confirmar Presença</button>
+  </div>
+</section>
+
+<footer>
+  <p>XV Anos — Anny — 2026</p>
+</footer>
+
+<!-- ═══════════ MODAL ═══════════ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h3>Confirmar Presença</h3>
+    <p class="modal-desc">Preencha os dados abaixo</p>
+
+    <div class="form-group">
+      <label for="inputNome">Nome completo</label>
+      <input type="text" id="inputNome" placeholder="Seu nome">
+    </div>
+
+    <div class="form-group">
+      <label for="inputTelefone">Telefone/WhatsApp</label>
+      <input type="tel" id="inputTelefone" placeholder="(00) 00000-0000">
+    </div>
+
+    <div class="form-group">
+      <label for="selectConfirmacao">Confirmação</label>
+      <select id="selectConfirmacao">
+        <option value="">Selecione...</option>
+        <option value="sim">Confirmo minha presença</option>
+        <option value="nao">Não poderei comparecer</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="inputAcompanhantes">Quantos acompanhantes? (opcional)</label>
+      <input type="number" id="inputAcompanhantes" placeholder="0" min="0" max="10">
+    </div>
+
+    <button class="form-submit" id="formSubmit">Confirmar ✦</button>
+    <p class="form-msg" id="formMsg"></p>
+  </div>
+</div>
+
+<!-- ═══════════ VISUAL EFFECTS (independent) ═══════════ -->
+<script>
+  // ── Particles ──
+  const particlesEl = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 8 + 's';
+    p.style.animationDuration = (6 + Math.random() * 6) + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 3) + 'px';
+    particlesEl.appendChild(p);
+  }
+
+  // ── Rose Petals ──
+  function createPetal() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = (8 + Math.random() * 4) + 's';
+    petal.style.opacity = Math.random() * 0.5 + 0.3;
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 12000);
+  }
+
+  setInterval(createPetal, 1500);
+  for (let i = 0; i < 8; i++) {
+    setTimeout(createPetal, i * 300);
+  }
+</script>
+
+<!-- ═══════════ FIREBASE SDK ═══════════ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+  // ── Firebase Config ──
+  const firebaseConfig = {
+    apiKey:            "AIzaSyC0OtN63J3qPsgvY2hqM3GxsHJkmAmV_NA",
+    authDomain:        "xv-anos-anny.firebaseapp.com",
+    databaseURL:       "https://xv-anos-anny-default-rtdb.firebaseio.com",
+    projectId:         "xv-anos-anny",
+    storageBucket:     "xv-anos-anny.firebasestorage.app",
+    messagingSenderId: "72908881041",
+    appId:             "1:72908881041:web:036f29a093123feadf5330"
+  };
+
+  // ── Init Firebase ──
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const convidadosRef = db.ref('convidados');
+
+  // ── DOM refs ──
+  const modal = document.getElementById('modalOverlay');
+  const inputNome = document.getElementById('inputNome');
+  const inputTelefone = document.getElementById('inputTelefone');
+  const selectConfirmacao = document.getElementById('selectConfirmacao');
+  const inputAcompanhantes = document.getElementById('inputAcompanhantes');
+  const submitBtn = document.getElementById('formSubmit');
+  const formMsg = document.getElementById('formMsg');
+
+  // ── Modal Open / Close ──
+  document.getElementById('rsvpBtn').addEventListener('click', () => {
+    modal.classList.add('active');
+    formMsg.className = 'form-msg';
+    formMsg.textContent = '';
+    inputNome.value = '';
+    inputTelefone.value = '';
+    selectConfirmacao.value = '';
+    inputAcompanhantes.value = '';
+    submitBtn.disabled = false;
+  });
+
+  document.getElementById('modalClose').addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+
+  // ── Submit Confirmation ──
+  submitBtn.addEventListener('click', async () => {
+    const nome = inputNome.value.trim();
+    const telefone = inputTelefone.value.trim();
+    const confirmacao = selectConfirmacao.value;
+    const acompanhantes = inputAcompanhantes.value || '0';
+
+    // Validate
+    if (!nome) {
+      showMsg('Por favor, preencha seu nome.', 'error');
+      return;
+    }
+    if (!telefone) {
+      showMsg('Por favor, preencha seu telefone.', 'error');
+      return;
+    }
+    if (!confirmacao) {
+      showMsg('Por favor, selecione sua confirmação.', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Confirmando...';
+
+    try {
+      const timestamp = Date.now();
+      await convidadosRef.child(timestamp).set({
+        nome: nome,
+        telefone: telefone,
+        confirmacao: confirmacao,
+        acompanhantes: parseInt(acompanhantes),
+        timestamp: timestamp
+      });
+
+      showMsg(`✨ ${nome}, sua presença foi confirmada! ✨`, 'success');
+      submitBtn.textContent = 'Confirmado ✓';
+
+      setTimeout(() => {
+        modal.classList.remove('active');
+      }, 2000);
+
+    } catch (err) {
+      console.error('Firebase error:', err);
+      showMsg('Erro ao confirmar. Tente novamente.', 'error');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Confirmar ✦';
+    }
+  });
+
+  function showMsg(text, type) {
+    formMsg.textContent = text;
+    formMsg.className = `form-msg ${type}`;
+  }
+
+</script>
+
+</body>
+</html>
