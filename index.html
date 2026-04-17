@@ -192,6 +192,34 @@
   .info-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
   .info-value { font-size: 1.2rem; color: var(--cream); line-height: 1.5; }
 
+  .map-buttons { 
+    display: flex; 
+    gap: 8px; 
+    justify-content: center; 
+    margin-top: 1rem; 
+    flex-wrap: wrap;
+  }
+
+  .map-btn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .map-btn:hover {
+    background: rgba(201,168,76,0.2);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
   /* ── Gifts ── */
   .gifts { background: linear-gradient(180deg, transparent, rgba(201,168,76,0.03), transparent); }
   
@@ -484,7 +512,12 @@
       <div class="info-item">
         <div class="info-icon">📍</div>
         <p class="info-label">Local</p>
-        <p class="info-value">Ilha di Capri<br>São Bernardo do Campo</p>
+        <p class="info-value">Ilha di Capri - Salão Napoles<br>Rodovia Anchieta, SP-150, km 28<br>Vila Balnearia, São Bernardo do Campo - SP</p>
+        <div class="map-buttons">
+          <a href="https://www.google.com/maps/search/?api=1&query=Ilha+di+Capri+São+Bernardo+do+Campo+SP" target="_blank" class="map-btn">📍 Google Maps</a>
+          <a href="https://waze.com/ul?q=Ilha+di+Capri+São+Bernardo+do+Campo+SP" target="_blank" class="map-btn">🚗 Waze</a>
+          <a href="https://maps.apple.com/?q=Ilha+di+Capri+São+Bernardo+do+Campo+SP" target="_blank" class="map-btn">🗺️ Apple Maps</a>
+        </div>
       </div>
     </div>
   </div>
@@ -494,7 +527,7 @@
 <section class="dresscode">
   <div class="section-inner">
     <h2 class="section-title">Dresscode</h2>
-    <p class="section-subtitle">Sport Fino</p>
+    <p class="section-subtitle">Traje de Gala</p>
     <div class="dresscode-grid">
       <div class="dresscode-card">
         <p class="dresscode-label">Homens</p>
